@@ -6,7 +6,7 @@ describe('Game', function() {
   });
 
     it('can take a score', function() {
-      game.pinsHit(5); 
+      game.pinsHit(5);
       expect(game.frameScore).toEqual([5]);
     });
 
@@ -28,6 +28,11 @@ describe('Game', function() {
     game.pinsHit(1)
     expect(game.framesArray).toEqual([[3,5],[7,1]])
   })
+
+  it("Doesn't allow a score higher than 10 in a frame", function() {
+    game.pinsHit(9);
+    expect( function(){ game.pinsHit(3); } ).toThrow(new Error('Invalid frame score!'));
+  });
 
 
 });
